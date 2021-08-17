@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @student.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @student.last_name %>
+</p>
+
+<p>
+  <strong>Classes</strong>
+  <ul>
+    <% @student.student_schedules.each do |student_schedule| %>
+      <%= render 'student_schedules/show', student_schedule: student_schedule %>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -1,0 +1,6 @@
+<%#
+    student_schedule
+%>
+<li id='student_schedule-<%= student_schedule.id %>'>
+  <%= link_to student_schedule.schedule.subject, schedule_path(student_schedule.schedule) %>
+</li>

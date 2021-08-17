@@ -1,0 +1,29 @@
+<div id='new-student-schedule'>
+  <%= form_with model: @student_schedule, url: student_student_schedules_path(@student), create_remote: true do |form| %>
+    <% if @student_schedule.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@student_schedule.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @student_schedule.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :schedule %>
+      <%= form.select :schedule_id, options_from_collection_for_select(Subject.all.where.not(id: @student.schedules), :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :level %>
+      <%= form.number_field :level %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Add' %>
+    </div>
+  <% end %>
+</div>
